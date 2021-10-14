@@ -1,3 +1,4 @@
+#!/usr/bin/env python 
 from pywebio.input import input, NUMBER, TEXT, PASSWORD, input_group, slider
 from pywebio.output import *
 from pywebio import start_server
@@ -37,6 +38,7 @@ def main1():
         ], cancelable=True)
         return form1
 
+    
     put_row([put_markdown('# Parador Cruz de Tejeda').style("color: #746191; font-size: 40px; "
                                                             "margin-right:-400px; margin-left:200px"),
              put_image(image_login, width="35px", height="35px").style("margin-left: 500px;margin-right:-100px;"
