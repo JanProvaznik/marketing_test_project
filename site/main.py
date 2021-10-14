@@ -11,7 +11,7 @@ def main1():
     image_register = open("register.png", "rb").read()
 
     def ce(email):
-        sub = ".com"
+        sub = "@"
         if sub not in email:
             return "Wrong Format"
 
