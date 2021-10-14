@@ -120,5 +120,9 @@ def main1():
                                                                                   "margin-left:140px")
 
 if __name__=="__main__":
-    start_server(main1)
+    parser=argparse.ArgumentParser()
+    parser.add_argument("-p","--port",type=int,default=8080)
+    args=parser.parse_args()
+
+    start_server(main1,port=args.port)
 
