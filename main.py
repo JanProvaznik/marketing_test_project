@@ -54,7 +54,7 @@ def main1():
 
     gif_image = open("gif_video.gif", "rb").read()
 
-#    paraiso = open("paraiso_video.gif", "rb").read()
+    paraiso = open("paraiso_video.gif", "rb").read()
 
     imagen1 = open("image_parador1.jpg", "rb").read()
 
@@ -98,7 +98,7 @@ def main1():
     put_text("excavada por el agua y hundida por los volcanes.").style("color: #8b72b0; font-size:20px;"
                                                                        "margin-left:180px;margin-top:-10px")
 
-    #put_image(paraiso, width="1400px", height="500px")
+    put_image(paraiso, width="1400px", height="500px")
 
     put_text("Servicios").style("color: #8b72b0; font-size:30px; margin-left:360px;margin-top:26px")
 
