@@ -1,1 +1,1 @@
-web: python site/main.py
+web: python mysite/main.py --port=$PORT
