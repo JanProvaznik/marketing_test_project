@@ -41,14 +41,10 @@ def main1():
         return form1
 
     
-    put_row([put_markdown('# Parador Cruz de Tejeda').style("color: #746191; font-size: 40px; "
-                                                            "margin-right:-400px; margin-left:200px"),
-             put_image(image_login, width="35px", height="35px").style("margin-left: 500px;margin-right:-100px;"
-                                                                       "margin-top:35px").onclick \
+    put_row([put_markdown('# Parador Cruz de Tejeda').style("color: #746191;"),
+             put_image(image_login,width="35px",height="35px").style("margin:auto").onclick \
                  (lambda: data_login()),
-             put_image(image_register, width="37px", height="31px").style("margin-left: 155px;margin-top:"
-                                                                          "38px").onclick(lambda: data_register())
-             ])
+             put_image(image_register, width="35px", height="35px").style("margin:auto;").onclick(lambda: data_register())]).style("margin:auto;")
 
     imagen = open("flor.png", "rb").read()
 
@@ -65,7 +61,7 @@ def main1():
 
     regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
 
-    put_image(imagen, width="60px").style("margin-left:385px")
+    put_image(imagen, width="60px").style("margin:auto;")
 
     texto_cookies = 'Las cookies se utilizan para acceder y almacenar información en su dispositivo, para ofrecerle contenido ' \
                     'personalizado y anuncios basados en sus datos. Al elegir "Acepto", ' \
@@ -78,8 +74,7 @@ def main1():
 
     ])
 
-    put_text("El mayor sentido de emoción, pasión e "
-             "inspiración").style("color: #9b80c4; font-size:20px;margin-top:40px; margin-left:190px")
+    put_text("El mayor sentido de emoción, pasión e inspiración").style("color: #9b80c4; font-size:20px;margin-top:40px; margin:auto;")
 
     put_row([put_column([put_image(imagen2, width="410px", height="190px"),
                          put_image(imagen1, width="410px", height="200px")]),
@@ -96,15 +91,15 @@ def main1():
              "todo su esplendor,").style("color: #8b72b0; font-size:20px;margin-left:4px;margin-top:-10px")
 
     put_text("excavada por el agua y hundida por los volcanes.").style("color: #8b72b0; font-size:20px;"
-                                                                       "margin-left:180px;margin-top:-10px")
+                                                                       "margin:auto")
 
     put_image(paraiso, width="1400px", height="500px")
 
-    put_text("Servicios").style("color: #8b72b0; font-size:30px; margin-left:360px;margin-top:26px")
+    put_text("Servicios").style("color: #8b72b0; font-size:30px; margin-top:26px")
 
     put_image(logo, width="900px", height="45px")
 
-    put_image(logo1, width="250px", height="40px").style("margin-left:290px")
+    put_image(logo1, width="250px", height="40px")
 
     # put_processbar('bar')
     # for i in range(1, 11):
@@ -114,11 +109,11 @@ def main1():
 
     put_text("El Parador de Cruz de Tejeda te espera, ubicado en un lugar glorioso desde el que podrás explorar "
              "la hermosa isla de Gran Canaria, considerada por muchos "
-             "como un continente en").style("color:#8b72b0; font-size:20px;margin-top:10px;margin-left:20px")
+             "como un continente en").style("color:#8b72b0; font-size:20px;margin-top:10px;margin:auto")
 
     put_text("miniatura por la variedad de hermosos paisajes que alberga.").style("color:#8b72b0; "
                                                                                   "font-size:20px;margin-top:-8px;"
-                                                                                  "margin-left:140px")
+                                                                                  "margin:auto")
 
 if __name__=="__main__":
     parser=argparse.ArgumentParser()
