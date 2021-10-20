@@ -8,7 +8,10 @@ import time
 import argparse
 
 
+
+
 def main1():
+
     image_login = open("login.png", "rb").read()
     image_register = open("register.png", "rb").read()
 
@@ -50,13 +53,14 @@ def main1():
 
     gif_image = open("gif_video.gif", "rb").read()
 
-    paraiso = open("paraiso_video.gif", "rb").read()
+    #paraiso = open("paraiso_video.gif", "rb").read()
 
     imagen1 = open("image_parador1.jpg", "rb").read()
 
     imagen2 = open("image_parador2.jpg", "rb").read()
-
+    # video = open("paraiso_video.mp4","rb")
     logo = open("logos.PNG", "rb").read()
+
     logo1 = open("parador_logo.PNG", "rb").read()
 
     regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
@@ -93,19 +97,18 @@ def main1():
     put_text("excavada por el agua y hundida por los volcanes.").style("color: #8b72b0; font-size:20px;"
                                                                        "margin:auto")
 
-    put_image(paraiso, width="1400px", height="500px")
-
+    #put_image(paraiso, width="1400px", height="500px")
+    #put_html('''<video width="80%" height="500px">\
+   #<source src="/media/paraiso_video.mp4"  type="video/mp4">\
+   #    </video>
+   # ''')
+    #put_image(video)
     put_text("Servicios").style("color: #8b72b0; font-size:30px; margin-top:26px")
 
     put_image(logo, width="900px", height="45px")
 
     put_image(logo1, width="250px", height="40px")
 
-    # put_processbar('bar')
-    # for i in range(1, 11):
-    # set_processbar('bar', i / 10)
-    # time.sleep(0.1)
-    # set_processbar("Processing", value=1 )
 
     put_text("El Parador de Cruz de Tejeda te espera, ubicado en un lugar glorioso desde el que podrás explorar "
              "la hermosa isla de Gran Canaria, considerada por muchos "
