@@ -44,10 +44,10 @@ def main1():
         return form1
 
     
-    put_row([put_markdown('# Parador Cruz de Tejeda').style("color: #746191;"),
-             put_image(image_login,width="35px",height="35px").style("margin:auto").onclick \
+    put_row([put_markdown('# Parador Cruz de Tejeda').style("color: #746191;width:200%;"),
+        put_image(image_login,width="35px",height="35px").style("margin-top:auto;margin-right:35px;margin-left:100%;margin-bottom:auto;").onclick \
                  (lambda: data_login()),
-             put_image(image_register, width="35px", height="35px").style("margin:auto;").onclick(lambda: data_register())]).style("margin:auto;")
+                 put_image(image_register, width="35px", height="35px").style("margin-top:auto;margin-bottom:auto;margin-right:20px;margin-left:100%;").onclick(lambda: data_register())]).style("margin:auto;")
 
     imagen = open("flor.png", "rb").read()
 
@@ -65,7 +65,7 @@ def main1():
 
     regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
 
-    put_image(imagen, width="60px").style("margin:auto;")
+    put_image(imagen, width="60px").style("margin:auto;display:block;")
 
     texto_cookies = 'Las cookies se utilizan para acceder y almacenar información en su dispositivo, para ofrecerle contenido ' \
                     'personalizado y anuncios basados en sus datos. Al elegir "Acepto", ' \
