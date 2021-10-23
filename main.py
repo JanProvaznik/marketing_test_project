@@ -163,7 +163,7 @@ def main1():
 
     cat = open("gif_cat.gif", "rb").read()
 
-    #https://drive.google.com/uc?export=download&confirm=-Ejh&id=1_PHam7CaX9Iqjm29HOCMItnx7WV2GTsE
+    
 
     put_tabs([
         {'title': 'Contacto', 'content': [
