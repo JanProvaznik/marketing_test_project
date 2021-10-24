@@ -62,7 +62,7 @@ def main1():
 
     imagen2 = open("image_parador2.jpg", "rb").read()
     # video = open("paraiso_video.mp4","rb")
-    logo = open("logos.PNG", "rb").read()
+    logo = open("logos.png", "rb").read()
 
     # logo1 = open("parador_logo.PNG", "rb").read()
 
