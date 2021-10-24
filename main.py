@@ -26,18 +26,22 @@ def main1():
 
         form = input_group("Login", [
             input('Email:', name='email', type=TEXT, validate=ce),
-            input('Password:', name='password', type=TEXT, validate=pa),
+            input('Contraseña:', name='password', type=TEXT, validate=pa),
         ], cancelable=True)
-
+        if form != None:
+            popup(f"Se ha iniciado sesión correctamente!")
         return form
 
     def data_register():
 
-        form1 = input_group("Register", [
-            input("Name:", name="name", type=TEXT),
+        form1 = input_group("Registrarse", [
+            input("Nombre:", name="name", type=TEXT),
             input('Email:', name='email', type=TEXT, validate=ce),
-            input('Password:', name='password', type=TEXT, validate=pa)
+            input('Contraseña:', name='password', type=TEXT, validate=pa)
         ], cancelable=True)
+        if form1 != None:
+            popup(f"Gracias {form1['name']}, se ha registrado correctamente!")
+
         return form1
 
     put_markdown('# Parador Cruz de Tejeda').style("color: #746191;margin:auto;text-align:center")
@@ -60,7 +64,7 @@ def main1():
     # video = open("paraiso_video.mp4","rb")
     logo = open("logos.PNG", "rb").read()
 
-    #logo1 = open("parador_logo.PNG", "rb").read()
+    # logo1 = open("parador_logo.PNG", "rb").read()
 
     regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
 
@@ -71,7 +75,8 @@ def main1():
 
     popup('Cookies', [
         put_text(texto_cookies).style("color: #746191;margin:auto"),
-        put_buttons(["Acepto", "No, gracias"], onclick=lambda _: close_popup()).style("margin:auto;margin-top:10px; text-align:center")
+        put_buttons(["Acepto", "No, gracias"], onclick=lambda _: close_popup()).style(
+            "margin:auto;margin-top:10px; text-align:center")
 
     ])
 
@@ -145,25 +150,24 @@ def main1():
     dancing = open("dancing.gif", "rb").read()
 
     put_row([put_image(white1, width="100px", height="60px"),
-             put_image(dancing, width="270px",height="270px"),
+             put_image(dancing, width="270px", height="270px"),
              put_image(white2, width="100px", height="60px")
              ])
     put_text("Confirme su estancia en el Hotel Parador Cruz de Tejeda con nuestro Chatbot de última generación! "
              "Permite una reserva fácil, cómoda y instantánea totalmente GRATIS, desarrollada por "
              "nuestros expertos.").style("color: #8b72b0;font-size:20px;margin-top:10px;text-align:center")
-    put_text("¿A que esperas? Descárgala aquí:").style("color: #8b72b0;font-size:20px;margin-top:10px;text-align:center")
+    put_text("¿A que esperas? Descárgala aquí:").style(
+        "color: #8b72b0;font-size:20px;margin-top:10px;text-align:center")
 
     put_row([put_image(white1, width="50px", height="50px"),
              put_link("Descargar (Versión Desktop)",
                       "https://drive.google.com/uc?export=download&confirm=-Ejh&id=1_PHam7CaX9Iqjm29HOCMItnx7WV2GTsE"). \
-             style("color: #483a5c;font-size:20px;margin-top:10px;margin-left:150px;margin:auto;text-align:center"),
-             put_image(white2, width = "50px", height = "50px")
+            style("color: #483a5c;font-size:20px;margin-top:10px;margin-left:150px;margin:auto;text-align:center"),
+             put_image(white2, width="50px", height="50px")
              ])
     map = open("screenshot_map.PNG", "rb").read()
 
     cat = open("gif_cat.gif", "rb").read()
-
-    
 
     put_tabs([
         {'title': 'Contacto', 'content': [
@@ -174,14 +178,11 @@ def main1():
                 ['Instagram', '@cruzdetejeda'],
             ]).style("color: #8b72b0;margin:auto")
         ]},
-        {'title': 'Ubicación', 'content': put_image(map,width = "500px", height = "350px")},
+        {'title': 'Ubicación', 'content': put_image(map, width="500px", height="350px")},
         {'title': ':)', 'content': [
-            put_image(cat,width = "250px",height="250px")
+            put_image(cat, width="250px", height="250px")
         ]},
     ]).style("margin-top:50px")
-
-
-
 
 
 if __name__ == "__main__":
