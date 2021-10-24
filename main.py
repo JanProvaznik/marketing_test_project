@@ -60,7 +60,7 @@ def main1():
     # video = open("paraiso_video.mp4","rb")
     logo = open("logos.PNG", "rb").read()
 
-    logo1 = open("parador_logo.PNG", "rb").read()
+    #logo1 = open("parador_logo.PNG", "rb").read()
 
     regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
 
@@ -155,7 +155,7 @@ def main1():
 
     put_row([put_image(white1, width="50px", height="50px"),
              put_link("Descargar (Versión Desktop)",
-                      "https://www.googleapis.com/drive/v3/files/1_PHam7CaX9Iqjm29HOCMItnx7WV2GTsE?alt=media&key=AIzaSyBBr1nKq2D2NvQ-N3Kf2C4tJMAvXS3GlOk"). \
+                      "https://drive.google.com/uc?export=download&confirm=-Ejh&id=1_PHam7CaX9Iqjm29HOCMItnx7WV2GTsE"). \
              style("color: #483a5c;font-size:20px;margin-top:10px;margin-left:150px;margin:auto;text-align:center"),
              put_image(white2, width = "50px", height = "50px")
              ])
