@@ -1,18 +1,20 @@
 #!/usr/bin/env python
+import codecs
 
 from pywebio.input import input, NUMBER, TEXT, PASSWORD, input_group, slider
 from pywebio.output import *
 from pywebio import start_server
+from bs4 import BeautifulSoup
 import re
 import time
 import argparse
+import smtplib
 
 
 def main1():
     image_login = open("login.png", "rb").read()
     image_register = open("register.png", "rb").read()
-    cheering_cat =  open("cheering_cat.gif", "rb").read()
-
+    cheering_cat = open("cheering_cat.gif", "rb").read()
 
     def ce(email):
 
@@ -27,10 +29,28 @@ def main1():
 
     lista = []
 
+    def send_email():
+        sender_email = "cruzdetejeda10@gmail.com"
+        rec_email = lista[0]
+        password = "cruzdetejeda123"
+
+        ### ↓↓↓ PROBLEM HERE ↓↓↓
+        fname = "beefree-qm1gocv4dh.html"
+        html_file = open(fname, "r", encoding="utf-8")
+        source_code = html_file.read()
+        message = source_code  # --->THE MESSAGE THAT GIVES ENCODING ERROR WHEN GIVEN HTML, ACCEPTS STRING
+        ### ↑↑↑ PROBLEM UP ↑↑↑
+
+        server = smtplib.SMTP("smtp.gmail.com", 587)
+        server.starttls()
+        server.login(sender_email, password)
+        print("Login success")
+        server.sendmail(sender_email, rec_email, message)
+        print("Email has been sent to", rec_email)
+
     def registered(num):
         if num not in lista:
             return "Credenciales incorrectas"
-
 
     def data_register():
 
@@ -44,9 +64,6 @@ def main1():
             lista.append(form1["email"])
             lista.append(form1["password"])
 
-
-
-
     def data_login():
 
         form = input_group("Login", [
@@ -54,14 +71,10 @@ def main1():
             input('Contraseña:', name='password', type=TEXT, validate=registered),
         ], cancelable=True)
         if form != None:
-            popup(f"Se ha iniciado sesión correctamente!", put_image(cheering_cat, width="150px", height="150px").style("text-align:center"))
-
+            popup(f"Se ha iniciado sesión correctamente!",
+                  put_image(cheering_cat, width="150px", height="150px").style("text-align:center"))
+            send_email()
         return form
-
-
-
-
-
 
     put_markdown('# Parador Cruz de Tejeda').style("color: #746191;margin:auto;text-align:center")
 
@@ -94,7 +107,8 @@ def main1():
 
     popup('Cookies', [
         put_text(texto_cookies).style("color: #746191;margin:auto"),
-        put_buttons(["Acepto", "No, gracias"], onclick=lambda _: close_popup()).style("margin:auto;margin-top:10px; text-align:center")
+        put_buttons(["Acepto", "No, gracias"], onclick=lambda _: close_popup()).style(
+            "margin:auto;margin-top:10px; text-align:center")
 
     ])
 
@@ -168,19 +182,20 @@ def main1():
     dancing = open("dancing.gif", "rb").read()
 
     put_row([put_image(white1, width="100px", height="60px"),
-             put_image(dancing, width="270px",height="270px"),
+             put_image(dancing, width="270px", height="270px"),
              put_image(white2, width="100px", height="60px")
              ])
     put_text("Confirme su estancia en el Hotel Parador Cruz de Tejeda con nuestro Chatbot de última generación! "
              "Permite una reserva fácil, cómoda y instantánea totalmente GRATIS, desarrollada por "
              "nuestros expertos.").style("color: #8b72b0;font-size:20px;margin-top:10px;text-align:center")
-    put_text("¿A que esperas? Descárgala aquí:").style("color: #8b72b0;font-size:20px;margin-top:10px;text-align:center")
+    put_text("¿A que esperas? Descárgala aquí:").style(
+        "color: #8b72b0;font-size:20px;margin-top:10px;text-align:center")
 
     put_row([put_image(white1, width="50px", height="50px"),
              put_link("Descargar App",
                       "https://drive.google.com/uc?export=download&confirm=-Ejh&id=1BSFvy9fI5LUzerSpdGxB12rqjYZVO3Oe"). \
-             style("color: #483a5c;font-size:20px;margin-top:10px;margin-left:140px;margin:auto;text-align:center"),
-             put_image(white2, width = "50px", height = "50px")
+            style("color: #483a5c;font-size:20px;margin-top:10px;margin-left:140px;margin:auto;text-align:center"),
+             put_image(white2, width="50px", height="50px")
              ])
     map = open("screenshot_map.PNG", "rb").read()
 
@@ -194,26 +209,22 @@ def main1():
     link2 = put_link("Twitter", "https://twitter.com/paradores?lang=es").style("color: #8b72b0;margin:auto")
     link3 = put_link("Facebook", "https://es-es.facebook.com/paradores").style("color: #8b72b0;margin:auto")
 
-
     put_tabs([
         {'title': 'Contacto', 'content': [
             put_table([
                 ['Tipo', 'Detalle'],
-                ['Email', 'cruzdetejeda10@gmail.com',],
+                ['Email', 'cruzdetejeda10@gmail.com', ],
                 ['Teléfono', '9209102019'],
-                [put_image(insta_pic,width = "20px",height="20px"), link1],
-                [put_image(twitter_pic,width = "20px",height="20px"), link2],
+                [put_image(insta_pic, width="20px", height="20px"), link1],
+                [put_image(twitter_pic, width="20px", height="20px"), link2],
                 [put_image(facebook_pic, width="20px", height="20px"), link3]
             ]).style("color: #8b72b0;margin:auto")
         ]},
-        {'title': 'Ubicación', 'content': put_image(map,width = "500px", height = "350px")},
+        {'title': 'Ubicación', 'content': put_image(map, width="500px", height="350px")},
         {'title': ':)', 'content': [
-            put_image(cat,width = "250px",height="250px")
+            put_image(cat, width="250px", height="250px")
         ]},
     ]).style("margin-top:50px")
-
-
-
 
 
 if __name__ == "__main__":
