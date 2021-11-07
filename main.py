@@ -9,6 +9,7 @@ import re
 import time
 import argparse
 import smtplib
+from email_creator import create_email
 
 
 def main1():
@@ -24,30 +25,25 @@ def main1():
 
     def pa(password):
 
-        if len(password) <= 8:
+        if len(password) < 8:
             return "Passwords must be 8 digits or more"
 
     lista = []
-
+    
     def send_email():
         sender_email = "cruzdetejeda10@gmail.com"
-        rec_email = lista[0]
+        rec_email = lista[-1] # we want to send to the last added
         password = "cruzdetejeda123"
 
-        ### ↓↓↓ PROBLEM HERE ↓↓↓
-        fname = "beefree-qm1gocv4dh.html"
-        html_file = open(fname, "r", encoding="utf-8")
-        source_code = html_file.read()
-        message = source_code  # --->THE MESSAGE THAT GIVES ENCODING ERROR WHEN GIVEN HTML, ACCEPTS STRING
-        ### ↑↑↑ PROBLEM UP ↑↑↑
 
         server = smtplib.SMTP("smtp.gmail.com", 587)
         server.starttls()
         server.login(sender_email, password)
         print("Login success")
-        server.sendmail(sender_email, rec_email, message)
-        print("Email has been sent to", rec_email)
-
+        message = create_email("email.html", "Parador Cruz de Tejeda", f"Parador Cruz de Tejeda <{sender_email}>",rec_email)
+        bytemessage = message.as_bytes()
+        server.sendmail(sender_email, rec_email,bytemessage )
+        #print("Email has been sent to", rec_emailbytemessage )
     def registered(num):
         if num not in lista:
             return "Credenciales incorrectas"
