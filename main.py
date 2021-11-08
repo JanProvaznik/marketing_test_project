@@ -11,6 +11,11 @@ import argparse
 import smtplib
 from email_creator import create_email
 
+class Usuario:
+    def __init__(self,email,name,password):
+        self.email=email
+        self.name=name
+        self.password=password
 
 def main1():
     image_login = open("login.png", "rb").read()
@@ -57,8 +62,7 @@ def main1():
         ], cancelable=True)
         if form1 != None:
             popup(f"Gracias {form1['name']}, se ha registrado correctamente!")
-            lista.append(form1["email"])
-            lista.append(form1["password"])
+            lista.append(Usuario(form1['email'],form1['name'],form1["password"]))
 
     def data_login():
 
