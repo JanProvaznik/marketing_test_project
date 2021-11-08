@@ -33,11 +33,11 @@ def main1():
         if len(password) < 8:
             return "Passwords must be 8 digits or more"
 
-    lista = []
+    lista = [Usuario('j.a.n.provaznik@email.cz','Jan','12345678')]
     
     def send_email():
         sender_email = "cruzdetejeda10@gmail.com"
-        rec_email = lista[-1] # we want to send to the last added
+        rec_email = lista[-1].email # we want to send to the last added
         password = "cruzdetejeda123"
 
 
@@ -49,9 +49,18 @@ def main1():
         bytemessage = message.as_bytes()
         server.sendmail(sender_email, rec_email,bytemessage )
         #print("Email has been sent to", rec_emailbytemessage )
-    def registered(num):
-        if num not in lista:
+    def registered(email):
+        if email not in [x.email for x in lista]:
             return "Credenciales incorrectas"
+    # HACK correct is having hash of password
+    def correct_password(email,password):
+        users = [x for x in lista if x.email==email]
+        if not users:
+            return False
+        user=users[0]
+        if user.password == password:
+            return True
+        return False
 
     def data_register():
 
@@ -63,17 +72,18 @@ def main1():
         if form1 != None:
             popup(f"Gracias {form1['name']}, se ha registrado correctamente!")
             lista.append(Usuario(form1['email'],form1['name'],form1["password"]))
+        send_email()
 
     def data_login():
 
         form = input_group("Login", [
             input('Email:', name='email', type=TEXT, validate=registered),
-            input('Contraseña:', name='password', type=TEXT, validate=registered),
+            input('Contraseña:', name='password', type=TEXT),
         ], cancelable=True)
-        if form != None:
+        if form != None and correct_password(form['email'],form['password']):
             popup(f"Se ha iniciado sesión correctamente!",
                   put_image(cheering_cat, width="150px", height="150px").style("text-align:center"))
-            send_email()
+        else: popup("Contraseña incorrecta")
         return form
 
     put_markdown('# Parador Cruz de Tejeda').style("color: #746191;margin:auto;text-align:center")
@@ -93,7 +103,6 @@ def main1():
     imagen1 = open("image_parador1.jpg", "rb").read()
 
     imagen2 = open("image_parador2.jpg", "rb").read()
-    # video = open("paraiso_video.mp4","rb")
     logo = open("logos.png", "rb").read()
 
     logo1 = open("parador_logo.PNG", "rb").read()
